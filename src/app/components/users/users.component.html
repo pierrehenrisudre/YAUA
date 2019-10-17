@@ -1,0 +1,28 @@
+<div class="col-md-12 users-table">
+  <div class="col-md-12 search-box">
+    <span class="row"><b>Rechercher</b></span>
+    <input #searchfield class="col-md-11" [(ngModel)]="usersFilter" (ngModelChange)="search()">
+    <fa class="col-md-1 search-box-clear" name="times-circle" (click)="usersFilter=''"></fa>
+  </div>
+
+  <cdk-virtual-scroll-viewport itemSize="50" class="users-viewport">
+  <table>
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Identité</th>
+      <th scope="col">Ville</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *cdkVirtualFor="let user of users | usersfilter: usersFilter"
+          class="user-details-item"
+          (click)="navigateToUser(user.id)">
+        <td><img src="{{user.picture.thumbnail}}" alt="Smiley face" height="42" width="42"></td>
+        <td class="user-identity">{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</td>
+        <td>{{ user.location.city }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </cdk-virtual-scroll-viewport>
+</div>

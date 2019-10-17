@@ -1,0 +1,22 @@
+<div class="user-tabs" *ngIf="user$">
+
+    <mat-tab-group class="user-details" (selectedTabChange)="tabChanged($event)">
+        <mat-tab label="Données">
+
+            <div class="user-tab-content">
+                <app-user-details [user]="user$ | async"></app-user-details>
+            </div>
+        </mat-tab>
+
+
+
+
+
+        <mat-tab label="Cartographie">
+            <ng-template matTabContent>
+                <app-user-carto [user]="user$ | async"></app-user-carto>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

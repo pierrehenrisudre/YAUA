@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <nav>
+  <a class="navbar-brand"
+     routerLink="/">
+    Angular - NGRX / {{ (config$ | async)?.adminName }}
+  </a>
+</nav>
+</div>
+
+<mat-sidenav-container class="yaua">
+  <mat-sidenav class="col-md-3" mode="side" opened>
+    <router-outlet class="users"></router-outlet>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet name="userInfos"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,60 @@
+<div *ngIf="_user && _user.name">
+
+
+  <div class="text-center">
+    <img class="row" src="{{_user.picture.large}}" alt="Smiley face" width="150">
+  </div>
+
+  <div class="col-md-12">
+    <form [formGroup]="userDetailsForm" class="needs-validation" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field>
+            <input id="nameTitle" class="form-control" [formControl]="nameTitleCtrl" matInput placeholder="Civilité" required>
+          </mat-form-field>
+          <mat-error *ngIf="nameTitleCtrl?.invalid">Civilité requise</mat-error>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field>
+            <input type="text" class="form-control" id="name-first" formControlName="nameFirst" matInput placeholder="Prénom" required>
+          </mat-form-field>
+          <mat-error *ngIf="nameFirstCtrl?.invalid">Prénom requis</mat-error>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field>
+            <input type="text" class="form-control" id="name-last" formControlName="nameLast" matInput placeholder="Nom" required>
+          </mat-form-field>
+          <mat-error *ngIf="nameLastCtrl?.invalid">Nom requis</mat-error>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <mat-form-field>
+          <input type="number" class="form-control" id="location-latitude" formControlName="latitude" matInput placeholder="Latitude">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <mat-form-field>
+          <input type="number" class="form-control" id="location-longitude" formControlName="longitude" matInput placeholder="Longitude">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngIf="!userDetailsForm.valid && userDetailsForm?.dirty">
+          Données saisies invalides
+        </div>
+        <button *ngIf="userDetailsForm?.valid && userDetailsForm?.dirty" type="submit">Sauvegarder</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+
